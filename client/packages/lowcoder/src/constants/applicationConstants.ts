@@ -82,7 +82,7 @@ export interface AppPermissionInfo {
   publicToAll: boolean;
 }
 
-export type AppViewMode = "edit" | "preview" | "view";
+export type AppViewMode = "edit" | "preview" | "view" | "admin";
 
 export type AppPathParams = {
   viewMode: AppViewMode;

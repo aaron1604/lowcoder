@@ -22,6 +22,7 @@ import { CNRootContainer } from "constants/styleSelectors";
 
 const UICompContainer = styled.div<{ maxWidth?: number; readOnly?: boolean; bgColor: string }>`
   height: 100%;
+  min-height: 100vh;
   margin: 0 auto;
   max-width: ${(props) => props.maxWidth || 1600}px;
   background-color: ${(props) => props.bgColor};

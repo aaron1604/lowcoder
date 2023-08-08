@@ -55,6 +55,7 @@ import { foldersSelector } from "../../redux/selectors/folderSelector";
 import Setting from "pages/setting";
 import { TypographyText } from "../../components/TypographyText";
 import { messageInstance } from "lowcoder-design";
+import AppEditor from "../editor/AppEditor";
 
 const TabLabel = styled.div`
   font-weight: 500;
@@ -424,6 +425,23 @@ export default function ApplicationHome() {
                   ),
                 visible: ({ user }) => user.orgDev,
                 onSelected: (_, currentPath) => currentPath.split("/")[1] === "setting",
+              },
+            ],
+          },
+          {
+            items: [
+              {
+                text: <TabLabel>{trans("settings.title")}</TabLabel>,
+                routePath: '/adminapp',
+                routePathExact: false,
+                routeComp: AppEditor,
+                icon: ({ selected, ...otherProps }) =>
+                  selected ? (
+                    <HomeQueryLibraryActiveIcon {...otherProps} />
+                  ) : (
+                    <HomeQueryLibraryIcon {...otherProps} />
+                  ),
+                visible: ({ user }) => false,
               },
             ],
           },

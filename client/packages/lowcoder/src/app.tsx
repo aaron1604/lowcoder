@@ -1,5 +1,6 @@
 import { App, ConfigProvider } from "antd";
 import {
+  ADMIN_APP_URL,
   ALL_APPLICATIONS_URL,
   APP_EDITOR_URL,
   APPLICATION_VIEW_URL,
@@ -146,6 +147,7 @@ class AppIndex extends React.Component<AppIndexProps, any> {
                 FOLDER_URL,
                 TRASH_URL,
                 SETTING,
+                ADMIN_APP_URL
               ]}
               // component={ApplicationListPage}
               component={ApplicationHome}

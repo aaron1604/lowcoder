@@ -8,7 +8,10 @@ const Sider = styled(Layout.Sider)`
   height: calc(100vh - ${TopHeaderHeight});
   background: #f9f9fa;
   padding: 0 24px 0 24px;
-
+  + main.ant-layout-content.main-content .react-grid-layout {
+    background-color: #fff;
+    min-height: 100vh;
+  }
   .ant-menu {
     background: transparent;
     .ant-menu-item-selected {
@@ -26,45 +29,41 @@ const Sider = styled(Layout.Sider)`
 
 const Navbar = styled('div')`
   padding: 10px 0;
+  .indicator {
+    float: right;
+  }
   .sidebar-item {
+     > div {
+      padding: 10px;
+      :hover {
+        background: #efeff1;
+      }
+     }
     font-weight: 600;
     cursor: pointer;
     border-bottom: 1px solid #ddd;
-    padding: 10px;
     &.active-tab {
-      color: rgb(73, 101, 242);
+      color: #4965f2;
       a {
-        color: rgb(73, 101, 242);
+        color: #4965f2;
       }
-      background: rgb(235, 240, 247);
-    }
-    span {
-      padding-right: 10px;
+      background: #ebf0f7;
     }
     a {
-      color: #555960;
-      font-weight: 600;
       padding: 10px;
-      width: 100%;
       display: block;
+      width: 100%;
+      color: #2a2a2a;
+      :hover {
+        background: #efeff1;
+      }
     }
-    .indicator {
-      float: right;
+    ul {
+      padding-left: 10px;
     }
-  }
-  ul{
-    padding-left: 10px;
-    margin-bottom: 0;
     .sidebar-item {
-      min-height: 44px;
-      padding: 0px;
       border-bottom: 0;
-      border-radius: 4px;
     }
-    .sidebar-item:hover {
-      background: rgb(239, 239, 241);
-    }
-  }
 `;
 
 const menuData = [
@@ -73,7 +72,7 @@ const menuData = [
     "title": "Apps",
     "icon": "https://img.icons8.com/?size=512&id=1349&format=png",
     "children": [{
-      "id": 3,
+      "id": 2,
       "title": "All Apps",
       "icon": "https://img.icons8.com/?size=512&id=53382&format=png",
       "route": "/apps",
@@ -82,16 +81,16 @@ const menuData = [
       "id": 3,
       "title": "Modules",
       "icon": "https://img.icons8.com/?size=512&id=1349&format=png",
-      "route": "/apps/module",
+      //"route": "/apps/module",
       "children": [{
-        "id": 3,
-        "title": "Mobile",
+        "id": 4,
+        "title": "All Modules",
         "icon": "https://img.icons8.com/?size=512&id=1349&format=png",
         "route": "/apps/module",
         "children": []
       },]
     },{
-      "id": 3,
+      "id": 5,
       "title": "Trash",
       "icon": "https://img.icons8.com/?size=512&id=7837&format=png",
       "route": "/trash",
@@ -99,24 +98,25 @@ const menuData = [
     },]
   },
   {
-    "id": 2,
-    "title": "Products",
+    "id": 6,
+    "title": "Admin Apps",
     "icon": "https://img.icons8.com/?size=512&id=1349&format=png",
     "children": [
       {
-        "id": 3,
-        "title": "Mobile",
+        "id": 7,
+        "title": "App 1",
+        "route": "/adminapp/64bf88a1e3417328c6af468f/admin",
         "children": []
       },
       {
-        "id": 4,
+        "id": 8,
         "title": "Laptop",
         "children": []
       }
     ]
   },
   {
-    "id": 5,
+    "id": 9,
     "title": "About Us",
     "icon": "https://img.icons8.com/?size=512&id=1349&format=png",
     "children": []
@@ -164,7 +164,7 @@ const SidebarItem: React.FC<SidebarItemProps> = ({ item }) => {
               {item.icon && <img style={{marginRight: '5px'}} src={item.icon} width={15} /> }
               {item.title}
             </Link>: 
-            <span>{item.icon && <img style={{marginRight: '5px'}} src={item.icon} width={15} /> } {item.title}</span>}
+            <div>{item.icon && <img style={{marginRight: '5px'}} src={item.icon} width={15} /> } {item.title}</div>}
           </>
           )}
       {hasChildren  && isExpanded && (
